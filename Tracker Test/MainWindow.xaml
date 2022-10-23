@@ -1,0 +1,57 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tracker_Test"
+        xmlns:Collections="clr-namespace:System.Collections;assembly=mscorlib" x:Class="Tracker_Test.MainWindow"
+    
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+    
+        mc:Ignorable="d"
+        Title="MainWindow" Height="640" Width="890" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,5,0,0" VerticalAlignment="Top">
+            <Label Content="Список пользователей" HorizontalAlignment="Stretch" Height="30" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="0,5,0,0" VerticalAlignment="Top">
+            <Label Content="График по выбранному пользователю" HorizontalAlignment="Stretch" Height="30" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="16"/>
+        </StackPanel>
+
+        <DataGrid x:Name="personDataGrid" AutoGenerateColumns="False" Margin="0,40,0,0" Width="auto" IsReadOnly="True"
+                  Grid.Column="0" Grid.Row="1" 
+                  ItemsSource="{Binding Persons}" 
+                  CurrentCellChanged="personDataGrid_CurrentCellChanged" VerticalAlignment="Top" Height="500">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsDifferent}" Value="True">
+                            <Setter Property="Background" Value="CadetBlue"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding User}" Width="30*"/>
+                <DataGridTextColumn Header="Среднее кол-во шагов" Binding="{Binding AvgSteps}" Width="30*"/>
+                <DataGridTextColumn Header="Лучший рез-т" Binding="{Binding BestResult}" Width="20*"/>
+                <DataGridTextColumn Header="Худший рез-т" Binding="{Binding WorstResult}" Width="20*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <WindowsFormsHost Margin="5,40,0,0" Height="500" VerticalAlignment="Top" 
+                          Grid.Column="1" Grid.Row="1">
+            <dvc:Chart x:Name="chart" />
+        </WindowsFormsHost>
+        <Button x:Name="exportBtn" Grid.Column="1" Grid.Row="2" 
+                Content="Export" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Height="40" Width="200" FontSize="16" FontWeight="Bold" Background="#FFC4EDFF" Foreground="#FF151515" Click="exportBtn_Click"/>
+
+    </Grid>
+</Window>
