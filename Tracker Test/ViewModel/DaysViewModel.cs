@@ -24,7 +24,7 @@ namespace Tracker_Test.ViewModel
 
         public DaysViewModel()
         {
-            Days = CollectionViewSource.GetDefaultView(DataHandler.GetAllDays()); 
+            Days = CollectionViewSource.GetDefaultView(DataHandler.GetAllDays());
         }
 
 

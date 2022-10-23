@@ -19,12 +19,12 @@ namespace Tracker_Test.Data
             {
                 allPersons = (allDays[0].Persons);
 
-                foreach(Day day in allDays)
+                foreach (Day day in allDays)
                 {
-                    if (allPersons.Select(a=>a.User).Except(day.Persons.Select(p=>p.User)).Any())
+                    if (allPersons.Select(a => a.User).Except(day.Persons.Select(p => p.User)).Any())
                     {
                         PersonComparer personComparer = new PersonComparer();
-                        allPersons = allPersons.Union(day.Persons,personComparer).ToList();
+                        allPersons = allPersons.Union(day.Persons, personComparer).ToList();
                     }
                 }
 

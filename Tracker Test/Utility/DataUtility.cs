@@ -20,7 +20,7 @@ namespace Tracker_Test.Utility
             List<int> personStepsList = new List<int>();
 
             double avgSteps = 0;
-            
+
 
             if (daysAmount > 0)
             {
@@ -30,7 +30,7 @@ namespace Tracker_Test.Utility
                     requiredPerson = day.Persons.Where(p => p.User == person.User).
                         Cast<Person>().SingleOrDefault();
 
-                    if (requiredPerson!=null)
+                    if (requiredPerson != null)
                     {
                         personStepsSum += requiredPerson.Steps;
                         personStepsList.Add(requiredPerson.Steps);
@@ -50,7 +50,7 @@ namespace Tracker_Test.Utility
                 person.BestResult = personStepsList.Max();
                 person.WorstResult = personStepsList.Min();
             }
-            
+
         }
 
 

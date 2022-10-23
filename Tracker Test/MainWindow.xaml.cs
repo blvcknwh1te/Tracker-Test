@@ -65,12 +65,12 @@ namespace Tracker_Test
                     chartDrawer.UpdateData(axisXData, axisYData);
                 }
             }
-            
+
         }
 
         private void exportBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (selectedPerson != null)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -80,13 +80,13 @@ namespace Tracker_Test
                 saveFileDialog.InitialDirectory = JsonParser.DataPath;
                 if (saveFileDialog.ShowDialog() == true)
                 {
-                    JsonParser.ParsePersonToJson(selectedPerson,saveFileDialog.FileName);
+                    JsonParser.ParsePersonToJson(selectedPerson, saveFileDialog.FileName);
                     MessageBox.Show("Пользователь успешно сохранен.");
                 }
             }
             else
             {
-                MessageBox.Show("Сначала выберите пользователя.","Вы должны выбрать пользователя");
+                MessageBox.Show("Сначала выберите пользователя.", "Вы должны выбрать пользователя");
             }
 
 

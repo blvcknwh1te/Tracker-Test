@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Tracker_Test.ViewModel
 {
-    class PersonsViewModel : DependencyObject  
+    class PersonsViewModel : DependencyObject
     {
 
 
